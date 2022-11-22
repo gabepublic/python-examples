@@ -69,4 +69,4 @@ for x in [1, 2, 3, 4, 5]:
   Published by Addison-Wesley Professional
 - [2] Official TUTORIAL - https://docs.python.org/3/tutorial/
 - [3] https://pythonspot.com/en/python-flask-tutorials/
-- [4] http://pythonbooks.revolunet.com/
+- [4] :+1: List of Python books - http://pythonbooks.revolunet.com/
