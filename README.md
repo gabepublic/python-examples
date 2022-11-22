@@ -13,21 +13,24 @@ Python official website: https://www.python.org/
 
 ### Debugger
 
-Launch the debugger.
+Launch the debugger in "interactive" mode when the program crash.
+This allow introspection of the variable
 ```
-$ python -i
+$ python -i test.py
+>>>
+>>> print(p)
+```
 
-import pdb;
-pdb.set_trace();    # launch debugger
+Alternatively, add the launch debugger in the code nearby to the
+suspected issue code. The program will stop at that line enabling 
+further debugging.
+``` 
+import pdb; pdb.set_trace();    # launch debugger
 ```
 [Source: REF-1]
 
 
 ## Python packages
-
-### Web
-
-- https://www.djangoproject.com/
 
 ### Game
 
@@ -37,8 +40,17 @@ pdb.set_trace();    # launch debugger
 
 - https://matplotlib.org/
 
+### Web
+
+- https://www.djangoproject.com/
+
 
 ## EXAMPLES
+
+NOTE: run the examples from the root folder:
+```
+(.venv) c:\>python file\ex-csv.py 
+```
 
 ### import
 ```
@@ -49,7 +61,7 @@ import matplotlib.pyplot as plt
 
 - range
 ```
-for i in range(10)
+for i in range(10):
 ```
 
 ### Comprehension
@@ -62,6 +74,18 @@ squares = []
 for x in [1, 2, 3, 4, 5]:
 	squares.append(x ** 2)
 ```
+
+### File
+
+- open `csv` file; see `file\ex-csv.py`
+
+### HTTP
+
+- Http request; see `http\ex-urllib.py`
+
+### XML
+
+- Process XML; see `xml\ex-xml.py`
 
 ## References
 
