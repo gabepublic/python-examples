@@ -9,5 +9,6 @@ def run():
     print("fn: run...")
     spam()
 
-print("running simple.py...")
-run()
+if __name__ == '__main__':
+    print("running simple.py...")
+    run()

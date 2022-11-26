@@ -93,9 +93,56 @@ for x in [1, 2, 3, 4, 5]:
 
 ### Data Structure
 
-- see `datastruc\datastructure.py`
+- Data structures: tuple, list, set, dictionary 
+  - see `datastruc\datastructure.py`
 - SORT, see `datastruc\sort-group.py`
 - GROUPING, see `datastruc\sort-group.py`
+
+## Python magic method (`__xx__)
+
+- Operators
+```
+>>> x + 10		# equivalent tyo x.__add__(10)
+>>> names = ['one', 'two', 'three']
+>>> names[0]    # equiv to names.__getitem__(0)
+```
+
+- Usage with Python class
+```
+class Point():
+	def __add__(self, other):
+		[...]
+
+>>> p = Point(0,0)
+>>> p + 10
+```
+
+- Printable & Debug friendly; NOTE: should add to all class created
+```
+class Point():
+	def __repr__(self):
+		return "Point({!r}, {!r})", self.x, self.y)
+	
+	def __str__(self):
+		return "Point coordinate (x,y): ({}, {})"
+
+>>> p = Point()
+>>> p			# will call __repr__
+>>> repr(p)		# will call __repr__
+>>> print(p)	# will call __str__
+>>> str(p)	    # will call __str__
+```
+
+- For custom containers use the magic methods align with Python styles,
+  examples:
+```
+__len__
+__getitem__
+__iter__
+__enter__		# similar to onEnter; enable to use with [..] as [..]:
+__exit__		# similar to onExit; enable with [..] as [..]:
+[...]
+```
 
 ### File
 
@@ -108,6 +155,72 @@ for x in [1, 2, 3, 4, 5]:
 ### Modules & Functions
 
 - see `module\README.md` for discussions & examples
+
+### Class
+
+- NOTE: class name does not take "-"
+```
+File "c:\zCodes\python-examples\class\ex-class.py", line 1
+    class ex-class(object):
+            ^
+SyntaxError: invalid syntax
+```
+
+- Python does not prevent adding attribute to the object on the fly.
+  See `var3` is added to the object even though `ExClass` does not have
+  the attribute `var3`. This could be a PROBLEM!
+```
+(.venv) c:\zCodes\python-examples>python -i class\ExClass.py
+>>> myclass = ExClass(10,20)
+>>> myclass.var1
+10
+>>> myclass.var2
+20
+>>> myclass.getVar1()
+10
+>>> myclass.var3 = 80
+>>> myclass.var3
+80
+>>>
+```
+
+- `getattr` and `setattr` method
+```
+>>> >>> myclass.var1
+10
+>>> getattr(myclass, 'var1')
+10
+>>>
+```
+
+- Interesting feature of the class method call
+```
+# involves two steps: getting the method and calling the method
+>>> myclass.getVar1()
+# So, is EQUIVALENT to the following
+>>> (myclass.getVar1)()
+# or the following
+>>> c = myclass.getVar1
+>>> c()
+>>>
+```
+
+- OVERRIDING the class constructor; see `class\ExClass.py`
+```
+    @classmethod
+    def set88(cls):
+```
+
+- Inheritance; see `class\ExClass.py`
+- Multiple Inheritance; see `class\ExClass.py`
+- Method resolution object, `__mro__`, see `class\ExClass.py`
+
+- Type check
+```
+def print(formatter):
+	if not isintance(formatter, BaseFormatter):
+		raise TypeError("formatter must be a BaseFormatter")
+```
 
 ### HTTP
 
