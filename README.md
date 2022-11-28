@@ -136,11 +136,16 @@ class Point():
 - For custom containers use the magic methods align with Python styles,
   examples:
 ```
+__dict__		# holding all the class & object attributes
 __len__
 __getitem__
 __iter__
 __enter__		# similar to onEnter; enable to use with [..] as [..]:
 __exit__		# similar to onExit; enable with [..] as [..]:
+__getattribute__
+__setattribute__
+__getattrib__	# will be called for missing attribute 
+__getattrib__
 [...]
 ```
 
@@ -157,6 +162,8 @@ __exit__		# similar to onExit; enable with [..] as [..]:
 - see `module\README.md` for discussions & examples
 
 ### Class
+
+- For Summary of good practice, see `class\ClassTemplate.py`
 
 - NOTE: class name does not take "-"
 ```
@@ -183,6 +190,9 @@ SyntaxError: invalid syntax
 80
 >>>
 ```
+
+- **NOTE:** by convention, all variables with `_`, for example, `_var1`
+  should be treated as private variable of that class 
 
 - `getattr` and `setattr` method
 ```
@@ -213,7 +223,8 @@ SyntaxError: invalid syntax
 
 - Inheritance; see `class\ExClass.py`
 - Multiple Inheritance; see `class\ExClass.py`
-- Method resolution object, `__mro__`, see `class\ExClass.py`
+- Method resolution object, `__mro__`; see `class\ExClass.py`
+- Locking private attribute;  see `class\ExLockPrivAttrib.py`
 
 - Type check
 ```
