@@ -59,7 +59,17 @@ $ python
 ```
   - better approach is setting the `PYTHONPATH`
 
+## Documentation
 
+Documentation shows up using `help(sample.add)
+- function
+```
+# sample.py
+def add(x,y):
+	'''
+	Add x and y
+	'''
+```
 
 ## EXAMPLES
 
@@ -136,6 +146,8 @@ class Point():
 - For custom containers use the magic methods align with Python styles,
   examples:
 ```
+__class__
+__name__
 __dict__		# holding all the class & object attributes
 __len__
 __getitem__
@@ -153,13 +165,16 @@ __getattrib__
 
 - open `csv` file; see `file\ex-csv.py`
 
-### Lambda Function
-
-- see `datastruc\sort-group.py`
-
 ### Modules & Functions
 
-- see `module\README.md` for discussions & examples
+- see `module_and_function\README.md` for discussions & examples
+- see `module_and_function\simple.py`
+- see `module_and_function\ex-function.py`
+
+### Lambda Function
+
+- Simple example of lambda function; see `datastruc\sort-group.py`
+- Also see examples in `module_and_function` folder
 
 ### Class
 
@@ -232,6 +247,9 @@ def print(formatter):
 	if not isintance(formatter, BaseFormatter):
 		raise TypeError("formatter must be a BaseFormatter")
 ```
+
+### Metaclass
+
 
 ### HTTP
 

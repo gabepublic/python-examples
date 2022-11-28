@@ -1,8 +1,10 @@
-# Python Module
+# Python Module and Function
+
+## MODULE
 
 Python file, `*.py`, is a module.
 
-## `simple.py`
+### `simple.py`
 
 - Running
 ```
@@ -14,7 +16,7 @@ x is  88
 (.venv) $
 ```
 
-## Using REPL to explore `simple.py`
+### Using REPL to explore `simple.py`
 
 - Enter REPL
 ```
@@ -93,7 +95,7 @@ if __name__ == '__main__':
 ```
 
 
-## Create a package
+### Create a package
 
 - create a package directory, `mypckg`
 
@@ -112,5 +114,33 @@ import mypckg.simple
 
 # BETTER approach
 from . import simple
- 
 ```
+
+## FUNCTION
+
+Python function is just a regular Python object
+
+- see `ex-function.py`
+- function can make function; see `ex-function.py`
+- function that takes any number of arguments
+
+## FUNCTION - Lambda
+
+- Lambda function; see `ex-function.py`
+
+## FUNCTION - Closure
+
+Exploring further the above example about the "function makes function",
+see `ex-function.py`, the `def add(x,y)` function captures & stores
+the x & y and returns it with the function; this is the Python Closure.
+So, even when x & y are deleted after the "function return", the
+return function still works, and remembers x & y.
+
+Closure is useful for:
+- for create & prepare a function to be executed at later point in time
+
+- see `ex-closure.py`
+
+## Decorator
+
+- for example adding logging to all the functions; see `ex-decorator.py`
