@@ -148,6 +148,7 @@ class Point():
 ```
 __class__
 __name__
+__iter__
 __dict__		# holding all the class & object attributes
 __len__
 __getitem__
@@ -248,8 +249,38 @@ def print(formatter):
 		raise TypeError("formatter must be a BaseFormatter")
 ```
 
-### Metaclass
+### Iterators and Generators
 
+- the for loop under the cover; also see "generator" in `ex-iterator.py`
+```
+for name in names:
+	print(name)
+
+>>> equivalent to
+it = names.__iter__()
+it.__next__()
+[...]
+```
+
+- simulating linux tail command
+```
+def follow(filename):
+	f = open(filename, 'r')
+	f.seek(0, os.SEEK_END)
+	while True:
+		line = f.readline()
+		if not line:
+			time.sleep(0.1)
+			continue
+		yield line		# emit the line and makes the function a Generator
+
+for ln in follow('filename'):
+	print(ln)
+```
+
+### Coroutines
+
+- see `coroutine.py`
 
 ### HTTP
 
