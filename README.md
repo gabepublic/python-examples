@@ -59,6 +59,16 @@ $ python
 ```
   - better approach is setting the `PYTHONPATH`
 
+- Useful
+```
+>>> dir(S)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__',
+...
+'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+>>> help(S)
+```
+
 ## Documentation
 
 Documentation shows up using `help(sample.add)
@@ -91,6 +101,8 @@ for i in range(10):
 ```
 
 ### Comprehension
+
+- basic
 ```
 squares = [x ** 2 for x in [1, 2, 3, 4, 5]]
 # ~~~~~~~~~~~~~~
@@ -101,12 +113,24 @@ for x in [1, 2, 3, 4, 5]:
 	squares.append(x ** 2)
 ```
 
+- with condition
+```
+squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
+```
+
 ### Data Structure
 
 - Data structures: tuple, list, set, dictionary 
   - see `datastruc\datastructure.py`
 - SORT, see `datastruc\sort-group.py`
 - GROUPING, see `datastruc\sort-group.py`
+
+- zip
+```
+>>> bob1 = dict(name='Bob', job='dev', age=40) # Keywords
+>>> bob1
+{'age': 40, 'name': 'Bob', 'job': 'dev'}
+```
 
 ## Python magic method (`__xx__)
 
