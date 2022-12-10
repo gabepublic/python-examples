@@ -81,6 +81,14 @@ def add(x,y):
 	'''
 ```
 
+- docstring
+```
+>>> import sys
+>>> print(sys.__doc__)
+This module provides access to some objects used or maintained by the
+interpreter and to functions that interact strongly with the interpreter.
+```
+
 ## EXAMPLES
 
 NOTE: run the examples from the root folder:
@@ -91,16 +99,65 @@ NOTE: run the examples from the root folder:
 ### import
 ```
 import matplotlib.pyplot as plt
+from matplotlib import pyplot
 ```
 
 ### For-loop
 
 - range
 ```
-for i in range(10):
+>>> for i in range(10):
+
+>>> list(range(5)), list(range(2, 5)), list(range(0, 10, 2))
+([0, 1, 2, 3, 4], [2, 3, 4], [0, 2, 4, 6, 8])
 ```
 
-### Comprehension
+- zip
+```
+>>> L1 = [1,2,3,4]
+>>> L2 = [5,6,7,8]
+>>> list(zip(L1, L2))
+[(1, 5), (2, 6), (3, 7), (4, 8)]
+
+>>> for (x, y) in zip(L1, L2):
+
+>>> keys = ['spam', 'eggs', 'toast']
+>>> vals = [1, 3, 5]
+dict(zip(keys, vals))
+{'eggs': 3, 'toast': 5, 'spam': 1}
+```
+
+- enumerate
+```
+>>> S = 'spam'
+>>> E = enumerate(S)
+>>> next(E)
+(0, 's')
+>>> for (offset, item) in enumerate(S):
+
+>>> for (i, line) in enumerate(os.popen('systeminfo')):
+```
+
+### Iterator
+```
+>>> L = [1, 2, 3]
+>>> I = iter(L) # Obtain an iterator object from an iterable
+>>> I.__next__() # Call iterator's next to advance to next item
+1
+
+>>> while True:
+...     n = I.__next__()
+
+>>> D = {'a':1, 'b':2, 'c':3}
+>>> V = Iter(D.values())
+>>> next(V)
+1
+>>> I = iter(D)
+>>> next(I)
+'a'
+```
+
+### List Comprehension
 
 - basic
 ```
@@ -116,6 +173,12 @@ for x in [1, 2, 3, 4, 5]:
 - with condition
 ```
 squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
+```
+
+- nested loop
+```
+>>> [x + y for x in 'abc' for y in 'lmn']
+['al', 'am', 'an', 'bl', 'bm', 'bn', 'cl', 'cm', 'cn']
 ```
 
 ### Data Structure
@@ -195,6 +258,15 @@ __getattrib__
 - see `module_and_function\README.md` for discussions & examples
 - see `module_and_function\simple.py`
 - see `module_and_function\ex-function.py`
+
+- module reload
+```
+import changer
+[...]
+from imp import reload
+reload(charger)
+[...]
+```
 
 ### Lambda Function
 

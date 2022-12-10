@@ -35,3 +35,24 @@ for ticker, name in zip(tickers, names):
 # ZIP to create dictionary
 company_ticker = dict(zip(names, tickers))
 print(company_ticker)
+
+# Filtered list of tuples
+print("\n filtered list of tuples=======================")
+import collections
+Card = collections.namedtuple('Card', ['rank', 'suit'])
+ranks = [str(n) for n in range(2, 11)] + list('JQKA')
+suits = 'spades diamonds clubs hearts'.split()
+cards = [Card(rank, suit) for suit in suits
+                          for rank in ranks]
+print('Cards: ', cards)
+print('Reversed cards: ', reversed(cards))
+print('Total cards: ', len(cards))
+filtered = [tup for tup in cards if tup[1] == 'spades']
+print('Filtered all spades: ', filtered)
+print('Total spades: ', len(filtered))
+
+from random import choice
+print('Random draw: ', choice(cards))
+
+print('Is 2-hearts in filtered cards: ', Card('2', 'hearts') in filtered)
+print('Is 3-spades in filtered cards: ', Card('2', 'spades') in filtered)
