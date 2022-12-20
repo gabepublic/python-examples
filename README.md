@@ -5,14 +5,12 @@ Python coding examples.
 Python official website: https://www.python.org/
 
 ## SETUP
-
 - Install Python
 - Install the virtual environment package
 - Create virtual environment and activate it
 - For instructions, go to https://digitalcompanion.gitbook.io/home/setup/dev-environment/python
 
 ### Debugger
-
 Launch the debugger in "interactive" mode when the program crash.
 This allow introspection of the variable
 ```
@@ -29,21 +27,15 @@ import pdb; pdb.set_trace();    # launch debugger
 ```
 [Source: REF-1]
 
-
 ## Python packages
-
 - Game
   - https://www.pygame.org/news
-
 - Science
   - https://matplotlib.org/
-
 - Web
   - https://www.djangoproject.com/
 
-
 ## REPL
-
 - Enter REPL
 ```
 $ python
@@ -70,7 +62,6 @@ $ python
 ```
 
 ## Documentation
-
 Documentation shows up using `help(sample.add)
 - function
 ```
@@ -90,7 +81,6 @@ interpreter and to functions that interact strongly with the interpreter.
 ```
 
 ## EXAMPLES
-
 NOTE: run the examples from the root folder:
 ```
 (.venv) c:\>python file\ex-csv.py 
@@ -103,7 +93,6 @@ from matplotlib import pyplot
 ```
 
 ### For-loop
-
 - range
 ```
 >>> for i in range(10):
@@ -158,7 +147,6 @@ dict(zip(keys, vals))
 ```
 
 ### List Comprehension
-
 - basic
 ```
 squares = [x ** 2 for x in [1, 2, 3, 4, 5]]
@@ -182,7 +170,6 @@ squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
 ```
 
 ### Data Structure
-
 - Data structures: tuple, list, set, dictionary 
   - see `datastruc\datastructure.py`
 - SORT, see `datastruc\sort-group.py`
@@ -196,7 +183,6 @@ squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
 ```
 
 ## Python magic method (`__xx__)
-
 - Operators
 ```
 >>> x + 10		# equivalent tyo x.__add__(10)
@@ -250,11 +236,9 @@ __getattrib__
 ```
 
 ### File
-
 - open `csv` file; see `file\ex-csv.py`
 
 ### Modules & Functions
-
 - see [`module_and_function\README.md`](https://github.com/gabepublic/python-examples/tree/main/module_and_function)
   for discussions & examples
 - see `module_and_function\simple.py`
@@ -270,12 +254,10 @@ reload(charger)
 ```
 
 ### Lambda Function
-
 - Simple example of lambda function; see `datastruc\sort-group.py`
 - Also see examples in `module_and_function` folder
 
 ### Class
-
 - For Summary of good practice, see `class\ClassTemplate.py`
 
 - NOTE: class name does not take "-"
@@ -347,7 +329,6 @@ def print(formatter):
 ```
 
 ### Iterators and Generators
-
 - the for loop under the cover; also see "generator" in `ex-iterator.py`
 ```
 for name in names:
@@ -375,21 +356,46 @@ for ln in follow('filename'):
 	print(ln)
 ```
 
-### Coroutines
+### Context Manager
 
+- Without context manager, file is not closed when `file.write` 
+  encounters exception:
+```
+file = open('hello.txt', 'w')
+file.write('Hello, World')
+file.close()
+```
+- Using try-catch to address the issue:
+```
+file = open('hello.txt', 'w')
+try:
+  file.write('Hello, World')
+except Exception as e:
+  print('error: ', e)
+finally:
+  file.close()
+```
+- Using context manager
+```
+with open('hello.txt', mode='w') as f:
+  file.write('Hello, World')
+```
+- How python does it; using context manager protocol:
+  - `__enter__()` which, if it returns something, becomes the target of
+    the `as` portion of the statement, and a `__exit__()` method that is
+    called when the context block goes out of scope
+
+### Coroutines
 - see `coroutine.py`
 
 ### HTTP
-
 - Http request; see `http\ex-urllib.py`
 - JSON; see `datastruc\datastructure.py`
 
 ### XML
-
 - Process XML; see `xml\ex-xml.py`
 
 ## References
-
 - [1] Python Programming Language; David Beazley; O'Reilly Livelesson
   Published by Addison-Wesley Professional
 - [2] Official TUTORIAL - https://docs.python.org/3/tutorial/
