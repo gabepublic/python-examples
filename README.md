@@ -255,7 +255,8 @@ __getattrib__
 
 ### Modules & Functions
 
-- see `module_and_function\README.md` for discussions & examples
+- see [`module_and_function\README.md`](https://github.com/gabepublic/python-examples/tree/main/module_and_function)
+  for discussions & examples
 - see `module_and_function\simple.py`
 - see `module_and_function\ex-function.py`
 
