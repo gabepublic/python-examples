@@ -80,7 +80,7 @@ This module provides access to some objects used or maintained by the
 interpreter and to functions that interact strongly with the interpreter.
 ```
 
-## EXAMPLES
+## EXAMPLES - fundamental
 NOTE: run the examples from the root folder:
 ```
 (.venv) c:\>python file\ex-csv.py 
@@ -182,7 +182,7 @@ squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
 {'age': 40, 'name': 'Bob', 'job': 'dev'}
 ```
 
-## Python magic method (`__xx__)
+## Python magic method (`__xx__`)
 - Operators
 ```
 >>> x + 10		# equivalent tyo x.__add__(10)
@@ -395,9 +395,30 @@ with open('hello.txt', mode='w') as f:
 ### XML
 - Process XML; see `xml\ex-xml.py`
 
+## Modular Programming
+Source: Modular Programming with Python by Erik Westra; O'Reilly;
+Published by Packt Publishing; [Github](https://github.com/packtpublishing/modular-programming-with-python)
+
+Also see above [Examples - Modules & Packages](https://github.com/gabepublic/python-examples#modules--functions)
+
+### Python standard modules
+
+| Module | Description |
+| datetime | Defines classes to store and perform calculations using date and time values |
+| tempfile | Defines a range of functions to work with temporary files and directories |
+| csv | Supports reading and writing of CSV format files |
+| hashlib | Implements cryptographically secure hashes |
+| logging | Allows you to write log messages and manage log files |
+| threading | Supports multi-threaded programming |
+| html | A collection of modules (that is, a package) used to parse and generate HTML documents |
+| unittest | A framework for creating and running unit tests |
+| urllib | A collection of modules to read data from URLs |
+
+
 ## References
 - [1] Python Programming Language; David Beazley; O'Reilly Livelesson
   Published by Addison-Wesley Professional
 - [2] Official TUTORIAL - https://docs.python.org/3/tutorial/
 - [3] https://pythonspot.com/en/python-flask-tutorials/
 - [4] :+1: List of Python books - http://pythonbooks.revolunet.com/
+- [5] https://www.blog.pythonlibrary.org/
