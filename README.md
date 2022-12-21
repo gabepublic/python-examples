@@ -435,10 +435,24 @@ with open('hello.txt', mode='w') as f:
 ## Modular Programming
 Source: Modular Programming with Python by Erik Westra; O'Reilly;
 Published by Packt Publishing; [Github](https://github.com/packtpublishing/modular-programming-with-python)
-
 Also see above: 
 - [Examples - Modules & Packages](#modules--functions)
 - [Python packages](#python-packages)
+
+- Python provides two constructs to facilitate modular programming: 
+  modules and packages.
+  - module is the most basic method; module can be built-in, or written
+    in Python, or C. A “python” file (i.e., contains python codes and 
+    has py filename extension is a module
+  - package is a grouping of modules in a folder such that it can be 
+    referenced using dot notation to avoid module names collision.
+
+- Python package is distributed in the form of archived file (.whl). 
+  The wheel file is uploaded to repository, Python Package Index and 
+  other indexes, to share with others.
+  - `pip` is the recommended “package installer” for python.
+
+- To Package Python, see [Packaging Python Projects](https://packaging.python.org/en/latest/tutorials/packaging-projects/#uploading-your-project-to-pypi)
 
 - Import:
   - If you are importing from a **module**, all of the top-level functions, 
