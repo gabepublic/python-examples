@@ -29,7 +29,7 @@ import pdb; pdb.set_trace();    # launch debugger
 
 ## Python packages
 
-### Python standard modules
+### Python standard packages
 Doc: https://docs.python.org/3/library/index.html
 
 | Module | Description |
@@ -44,14 +44,30 @@ Doc: https://docs.python.org/3/library/index.html
 | unittest | A framework for creating and running unit tests |
 | urllib | A collection of modules to read data from URLs |
 
-### Extension modules
-
+### Extension packages
+- Date & Time:
+  - The dateutil package (https://github.com/dateutil/dateutil) extends
+    the datetime package included in the Python Standard Library, adding
+    support for recurring dates, time zones, complex relative dates, etc.
 - Game
   - https://www.pygame.org/news
 - Science
   - https://matplotlib.org/
 - Web
   - https://www.djangoproject.com/
+- Graphics
+  - Python Imaging Library (PIL); PIL is no longer being actively
+    developed; http://python-pillow.org/
+- PDF
+  - ReportLab is a commercial PDF generator, which is also released 
+    under an open source license. http://www.reportlab.com/opensource/.
+- XML
+  - The `lxml` toolkit (http://lxml.de) takes the pain out of reading
+    and writing XML- and HTML-formatted documents
+- Testing
+  - `unittest`
+  - the coverage package (https://pypi.python.org/pypi/coverage).
+  - the `unittest.mock` package in the Python Standard Library
 
 ## REPL
 - Enter REPL
@@ -97,6 +113,9 @@ def add(x,y):
 This module provides access to some objects used or maintained by the
 interpreter and to functions that interact strongly with the interpreter.
 ```
+
+- Use a tool such as Sphinx (http://www.sphinx-doc.org) to convert the 
+  docstrings into API documentation for the package.
 
 ## EXAMPLES - fundamental
 NOTE: run the examples from the root folder:
@@ -418,8 +437,128 @@ Source: Modular Programming with Python by Erik Westra; O'Reilly;
 Published by Packt Publishing; [Github](https://github.com/packtpublishing/modular-programming-with-python)
 
 Also see above: 
-- [Examples - Modules & Packages](https://github.com/gabepublic/python-examples#modules--functions)
+- [Examples - Modules & Packages](#modules--functions)
 - [Python packages](#python-packages)
+
+- Import:
+  - If you are importing from a **module**, all of the top-level functions, 
+    constants, classes, and other definitions will be imported. 
+  - When importing from a **package**, all of the top-level functions,
+    constants, and so on defined in the package's `__init__.py` file 
+    will be imported.
+  - Controlling what objects from the module or package gets imported
+    using the `__all__` variable as shown below. If the package has
+    `module_3`, it will not get imported.
+```
+__all__ = ["module_1", "module_2", "sub_package"]
+```
+   - WATCHOUT for circular dependency.
+```
+# module_1.py
+from module_2 import calc_markup
+def calc_total(items):
+...
+    calc_markup(10)
+
+# module_2.py
+
+from module_1 import calc_total
+def calc_markup(total):
+    return total * 0.1
+def make_sale(items):
+    total_price = calc_total(items)
+    ...
+
+# error
+# ImportError: cannot import name calc_total
+```
+
+- EXTENSIBLE module using dynamic import
+```
+from importlib import import_module
+
+# module name is provided from input
+module_name = input("Load module: ")
+if module_name != "":
+    module = importlib.import_module(module_name)
+    module.say_hello()
+```
+  - PLUGIN pattern: you can set up a separate directory, let say at the
+    top level of your program, to place the plugins, or you could store
+    your plugins in a directory outside of your program's source code,
+    and modify `sys.path` so that the Python interpreter can find the 
+    modules in that directory.
+  - HOOKS pattern: allowing external code to be called at particular 
+    points in your program
+```
+# package_1
+login_hook = None
+
+def set_login_hook(hook):
+    login_hook = hook
+
+def login(username, password):
+...
+  if login_hook != None:
+      login_hook(username)
+
+# the application
+def my_login_hook(username):
+  print('the hook function...')
+  ...
+
+login_module.set_login_hook(my_login_hook)
+```  
+
+- The **module search path** is stored in `sys.path`, and the Python 
+  interpreter will check the directories in this list one after another
+  until the desired module or package is found. When the Python 
+  interpreter starts, it initializes the module search path with the 
+  following directories:
+  - The directory containing the currently-executing script, or 
+  - the current directory if you are running the Python interactive 
+    interpreter in a terminal window
+  - Any directories listed in the PYTHONPATH environment variable
+  - The contents of the interpreter's site-packages directory, 
+    including any modules referred to by path configuration files 
+    within the site-packages directory
+  - A number of directories containing the various modules and packages
+    that make up the Python Standard Library
+```
+>>> import sys
+>>> print(sys.path)
+['', '/usr/local/lib/python3.3/site-packages', 
+'/Library/Frameworks/SQLite3.framework/Versions/B/Python/3.3', 
+'/Library/Python/3.3/site-packages/numpy-override', 
+'/Library/Python/3.3/site-packages/pip-1.5.6-py3.3.egg', 
+'/usr/local/lib/python3.3.zip', '/usr/local/lib/python3.3', 
+'/usr/local/lib/python3.3/plat-darwin', 
+'/usr/local/lib/python3.3/lib-dynload', 
+'/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3', 
+'/Library/Frameworks/Python.framework/Versions/3.3/lib/python3.3/plat-darwin']
+>>>
+>>> sys.path.append("/usr/local/shared-python-libs")
+>>>
+>>> sys.path.insert(1, "/usr/local/shared-python-libs")   # move up the module search priority
+```
+**Notice** that we use insert(1, ...) rather than insert(0, ...)
+
+
+## Misc notes
+
+- function placeholder using `pass`
+```
+def set_locations(locations):
+    pass
+``` 
+
+## Python conventions
+- Python Style Guide (https://www.python.org/dev/peps/pep-0008/) that 
+  provides a clear set of recommendations for how to format and style 
+  your code.
+- Module naming using all lowercase letters, and underscore if needed. 
+  Refer to https://www.python.org/dev/peps/pep-0008/#package-and-module-names
+  for more details.
 
 ## References
 - [1] Python Programming Language; David Beazley; O'Reilly Livelesson
