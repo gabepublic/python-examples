@@ -28,6 +28,24 @@ import pdb; pdb.set_trace();    # launch debugger
 [Source: REF-1]
 
 ## Python packages
+
+### Python standard modules
+Doc: https://docs.python.org/3/library/index.html
+
+| Module | Description |
+| -------| ----------- |
+| datetime | Defines classes to store and perform calculations using date and time values |
+| tempfile | Defines a range of functions to work with temporary files and directories |
+| csv | Supports reading and writing of CSV format files |
+| hashlib | Implements cryptographically secure hashes |
+| logging | Allows you to write log messages and manage log files |
+| threading | Supports multi-threaded programming |
+| html | A collection of modules (that is, a package) used to parse and generate HTML documents |
+| unittest | A framework for creating and running unit tests |
+| urllib | A collection of modules to read data from URLs |
+
+### Extension modules
+
 - Game
   - https://www.pygame.org/news
 - Science
@@ -399,22 +417,9 @@ with open('hello.txt', mode='w') as f:
 Source: Modular Programming with Python by Erik Westra; O'Reilly;
 Published by Packt Publishing; [Github](https://github.com/packtpublishing/modular-programming-with-python)
 
-Also see above [Examples - Modules & Packages](https://github.com/gabepublic/python-examples#modules--functions)
-
-### Python standard modules
-
-| Module | Description |
-| -------| ----------- |
-| datetime | Defines classes to store and perform calculations using date and time values |
-| tempfile | Defines a range of functions to work with temporary files and directories |
-| csv | Supports reading and writing of CSV format files |
-| hashlib | Implements cryptographically secure hashes |
-| logging | Allows you to write log messages and manage log files |
-| threading | Supports multi-threaded programming |
-| html | A collection of modules (that is, a package) used to parse and generate HTML documents |
-| unittest | A framework for creating and running unit tests |
-| urllib | A collection of modules to read data from URLs |
-
+Also see above: 
+- [Examples - Modules & Packages](https://github.com/gabepublic/python-examples#modules--functions)
+- [Python packages](#python-packages)
 
 ## References
 - [1] Python Programming Language; David Beazley; O'Reilly Livelesson
