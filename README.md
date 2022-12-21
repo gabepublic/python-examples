@@ -404,6 +404,7 @@ Also see above [Examples - Modules & Packages](https://github.com/gabepublic/pyt
 ### Python standard modules
 
 | Module | Description |
+| -------| ----------- |
 | datetime | Defines classes to store and perform calculations using date and time values |
 | tempfile | Defines a range of functions to work with temporary files and directories |
 | csv | Supports reading and writing of CSV format files |
