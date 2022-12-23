@@ -25,7 +25,23 @@ further debugging.
 ``` 
 import pdb; pdb.set_trace();    # launch debugger
 ```
-[Source: REF-1]
+Source: [REF-1](#references)
+
+## Utilities
+
+- **Code formatter**:
+  - The PEP 8 (Python Enhancement Proposal) document at 
+    https://www.python.org/dev/peps/pep-0008/ describes best practices 
+    for formatting code that most editors will automatically format
+  - YAPF (Yet Another Python Formatter, https://github.com/google/yapf)
+  - Black (https://github.com/psf/black)
+
+- **Code Linter**, report problems in the code, such as declaring a 
+  variable but never using it:
+  - Pylint - https://www.pylint.org/
+  - Flake8 - http://flake8.pycqa.org/en/latest/
+  - Mypy tool http://mypy-lang.org/ find problems, such as using text
+   when you should be using a number
 
 ## Python packages
 
@@ -95,6 +111,16 @@ $ python
 >>> help(S)
 ```
 
+## TEST
+
+- Install `pytest`
+```
+$ pip install pytest
+$ pytest --version
+
+$ pytest -v test.py
+```
+
 ## Documentation
 Documentation shows up using `help(sample.add)
 - function
@@ -105,7 +131,6 @@ def add(x,y):
 	Add x and y
 	'''
 ```
-
 - docstring
 ```
 >>> import sys
@@ -113,12 +138,16 @@ def add(x,y):
 This module provides access to some objects used or maintained by the
 interpreter and to functions that interact strongly with the interpreter.
 ```
-
 - Use a tool such as Sphinx (http://www.sphinx-doc.org) to convert the 
   docstrings into API documentation for the package.
 
 ## EXAMPLES - fundamental
-NOTE: run the examples from the root folder:
+- First line of the python file, let OS find the python interpreter 
+  to use on the linux environment:
+```
+#!/usr/bin/env python3
+```
+- NOTE: run the examples from the root folder:
 ```
 (.venv) c:\>python file\ex-csv.py 
 ```
@@ -137,7 +166,6 @@ from matplotlib import pyplot
 >>> list(range(5)), list(range(2, 5)), list(range(0, 10, 2))
 ([0, 1, 2, 3, 4], [2, 3, 4], [0, 2, 4, 6, 8])
 ```
-
 - zip
 ```
 >>> L1 = [1,2,3,4]
@@ -152,7 +180,6 @@ from matplotlib import pyplot
 dict(zip(keys, vals))
 {'eggs': 3, 'toast': 5, 'spam': 1}
 ```
-
 - enumerate
 ```
 >>> S = 'spam'
@@ -194,12 +221,10 @@ squares = []
 for x in [1, 2, 3, 4, 5]:
 	squares.append(x ** 2)
 ```
-
 - with condition
 ```
 squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
 ```
-
 - nested loop
 ```
 >>> [x + y for x in 'abc' for y in 'lmn']
@@ -219,14 +244,13 @@ squares = [x*x for x in [1,2,3,4,5,6] if x <= 5]
 {'age': 40, 'name': 'Bob', 'job': 'dev'}
 ```
 
-## Python magic method (`__xx__`)
+### Python magic method (`__xx__`)
 - Operators
 ```
 >>> x + 10		# equivalent tyo x.__add__(10)
 >>> names = ['one', 'two', 'three']
 >>> names[0]    # equiv to names.__getitem__(0)
 ```
-
 - Usage with Python class
 ```
 class Point():
@@ -236,7 +260,6 @@ class Point():
 >>> p = Point(0,0)
 >>> p + 10
 ```
-
 - Printable & Debug friendly; NOTE: should add to all class created
 ```
 class Point():
@@ -252,7 +275,6 @@ class Point():
 >>> print(p)	# will call __str__
 >>> str(p)	    # will call __str__
 ```
-
 - For custom containers use the magic methods align with Python styles,
   examples:
 ```
@@ -296,7 +318,6 @@ reload(charger)
 
 ### Class
 - For Summary of good practice, see `class\ClassTemplate.py`
-
 - NOTE: class name does not take "-"
 ```
 File "c:\zCodes\python-examples\class\ex-class.py", line 1
@@ -304,7 +325,6 @@ File "c:\zCodes\python-examples\class\ex-class.py", line 1
             ^
 SyntaxError: invalid syntax
 ```
-
 - Python does not prevent adding attribute to the object on the fly.
   See `var3` is added to the object even though `ExClass` does not have
   the attribute `var3`. This could be a PROBLEM!
@@ -322,7 +342,6 @@ SyntaxError: invalid syntax
 80
 >>>
 ```
-
 - **NOTE:** by convention, all variables with `_`, for example, `_var1`
   should be treated as private variable of that class 
 
@@ -334,7 +353,6 @@ SyntaxError: invalid syntax
 10
 >>>
 ```
-
 - Interesting feature of the class method call
 ```
 # involves two steps: getting the method and calling the method
@@ -346,18 +364,15 @@ SyntaxError: invalid syntax
 >>> c()
 >>>
 ```
-
 - OVERRIDING the class constructor; see `class\ExClass.py`
 ```
     @classmethod
     def set88(cls):
 ```
-
 - Inheritance; see `class\ExClass.py`
 - Multiple Inheritance; see `class\ExClass.py`
 - Method resolution object, `__mro__`; see `class\ExClass.py`
 - Locking private attribute;  see `class\ExLockPrivAttrib.py`
-
 - Type check
 ```
 def print(formatter):
@@ -376,7 +391,6 @@ it = names.__iter__()
 it.__next__()
 [...]
 ```
-
 - simulating linux tail command
 ```
 def follow(filename):
@@ -394,7 +408,6 @@ for ln in follow('filename'):
 ```
 
 ### Context Manager
-
 - Without context manager, file is not closed when `file.write` 
   encounters exception:
 ```
@@ -557,9 +570,23 @@ login_module.set_login_hook(my_login_hook)
 ```
 **Notice** that we use insert(1, ...) rather than insert(0, ...)
 
+## Book - Tiny Python Projects
+
+Tiny Python Projects; by Ken Youens-Clark
+Published by Manning Publications; O'Reilly
+Github: https://github.com/kyclark/tiny_python_projects
+
+### FastAPI
+
+- install FastAPI package
+```
+$ pip install fastapi
+$ pip install uvicorn
+```
+
+- See Github [gabepublic/api-fastapi-py-basic]()
 
 ## Misc notes
-
 - function placeholder using `pass`
 ```
 def set_locations(locations):
