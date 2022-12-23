@@ -316,6 +316,76 @@ reload(charger)
 - Simple example of lambda function; see `datastruc\sort-group.py`
 - Also see examples in `module_and_function` folder
 
+### Decorator
+- Very good source: https://realpython.com/primer-on-python-decorators/
+- In python, it’s possible to define functions inside other functions.
+  Such functions are called inner functions.
+```
+def parent():
+  print("parent")
+
+  def first_child():
+    print("first_child")
+  
+  first_child()
+```
+OUTPUT:
+```
+>>> parent()
+parent
+first_child
+```
+
+- A decorator is a design pattern in Python that allows a user to add 
+  new functionality to an existing object without modifying its 
+  structure. Decorators are usually called before the definition of 
+  a function you want to decorate.
+
+- Example of decorator. Decorators wrap a function, modifying its behavior.
+```
+def reponse_to_mailman(func):
+  def wrapper():
+    print("a mailman is approaching")
+    func()
+
+def bark():
+  print("woof")
+```
+OUTPUT:
+```
+>>> response = reponse_to_mailman(bark)
+>>> response()
+a mailman is approaching
+woof
+```
+
+- Example decorator with `@` declaration symbol, and function with
+  arguments
+```
+def reponse_to_mailman(func):
+  def wrapper(*args, **kwargs):
+    print("a mailman is approaching")
+    func(*args, **kwargs)
+  return wrapper
+  
+@reponse_to_mailman
+def bark():
+  print("woof")
+
+@reponse_to_mailman
+def make_sound(sound):
+  print(sound * 2)
+```
+OUTPUT:
+```
+>>> make_sound("woof")
+>>> bark()
+a mailman is approaching
+woofwoof
+a mailman is approaching
+woof
+```
+
 ### Class
 - For Summary of good practice, see `class\ClassTemplate.py`
 - NOTE: class name does not take "-"
@@ -583,8 +653,9 @@ Github: https://github.com/kyclark/tiny_python_projects
 $ pip install fastapi
 $ pip install uvicorn
 ```
+- See Github [gabepublic/api-fastapi-py-basic](https://github.com/gabepublic/api-fastapi-py-basic)
+- NOTE: fastapi uses python Decorator 
 
-- See Github [gabepublic/api-fastapi-py-basic]()
 
 ## Misc notes
 - function placeholder using `pass`
