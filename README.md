@@ -477,6 +477,26 @@ for ln in follow('filename'):
 	print(ln)
 ```
 
+- Generator is also useful for preventing memory issue due to loading
+  very large file, as shown below. Assume a very large `sample.txt`
+  file exists.
+```
+def read_file(filename):
+  #data =[]
+  with open(filename, "r") as input_file:
+    for line in input_file:
+      # data.append(line)
+      yield line
+
+contents = read_file("sample.txt")
+
+# shorter syntax to replace read_file function
+contents_1 = (line for line in open("sample.txt", "r"))
+
+for line in contents:
+  print(line)
+```
+
 ### Context Manager
 - Without context manager, file is not closed when `file.write` 
   encounters exception:
