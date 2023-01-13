@@ -84,6 +84,9 @@ Doc: https://docs.python.org/3/library/index.html
   - `unittest`
   - the coverage package (https://pypi.python.org/pypi/coverage).
   - the `unittest.mock` package in the Python Standard Library
+- Coding Utilities
+  - `mypy` - Mypy is a static type checker for Python.
+
 
 ## REPL
 - Enter REPL
@@ -310,6 +313,21 @@ import changer
 from imp import reload
 reload(charger)
 [...]
+```
+
+- function argument & return type
+```
+def add (x:int, y:int) -> int:
+
+from typing import Union
+# use Union in case y=0
+def div (x:int, y:int) -> Union[float, None]:
+  if (y!=0):
+    return x/y
+  return
+# alternative; recommended
+from typing import Optional
+def div (x:int, y:int) -> Optional[float]:
 ```
 
 ### Lambda Function
@@ -659,6 +677,41 @@ login_module.set_login_hook(my_login_hook)
 >>> sys.path.insert(1, "/usr/local/shared-python-libs")   # move up the module search priority
 ```
 **Notice** that we use insert(1, ...) rather than insert(0, ...)
+
+## Asynch
+
+TBD
+
+## Python Projects
+
+### Directory structures for API project
+
+```
+/<python_project>
+  /app
+    /routes
+      __init__.py
+      user.py
+    /schemas
+      __init__.py
+      user_models.py
+    /services
+      __init__.py
+      user_service.py
+    /helpers
+    config.py
+  tests/
+    __init__.py
+    foo/
+      __init__.py
+      test_view.py
+    bar/
+      __init__.py
+      test_view.py
+```
+
+
+
 
 ## Book - Tiny Python Projects
 
