@@ -4,6 +4,9 @@ Python coding examples.
 
 Python official website: https://www.python.org/
 
+Also see repo:
+- https://github.com/gcloudex/gc-python-pkg1
+
 ## SETUP
 - Install Python
 - Install the virtual environment package
