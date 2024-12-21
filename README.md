@@ -685,7 +685,7 @@ login_module.set_login_hook(my_login_hook)
 
 TBD
 
-## Python Projects
+## Python Projects & Packaging
 
 ### Directory structures for API project
 
@@ -712,6 +712,15 @@ TBD
       __init__.py
       test_view.py
 ```
+
+### Digital Ocean - How To Package And Distribute Python Applications
+
+URL: https://www.digitalocean.com/community/tutorials/how-to-package-and-distribute-python-applications
+
+
+### Publishing Python Packages
+
+Source: Oreilly, Manning, Author: Dane Hillard
 
 
 
