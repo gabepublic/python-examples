@@ -123,7 +123,7 @@ pip install pytest pytest-cov
   
 ## POETRY
 
-- install
+- install GLOBALLY
 ```
 pip install poetry
 ```
@@ -137,3 +137,56 @@ pip install poetry
 poetry add pytest
 poetry show
 ```
+
+- Validate installation
+```
+$ poetry --version
+Poetry (version 1.8.5)
+```
+
+- Show the default GLOBAL config:
+```
+$ poetry config list
+
+cache-dir = "C:\\Users\\thend\\AppData\\Local\\pypoetry\\Cache"
+experimental.system-git-client = false
+installer.max-workers = null
+installer.modern-installation = true
+installer.no-binary = null
+installer.parallel = true
+keyring.enabled = true
+solver.lazy-wheel = true
+virtualenvs.create = true
+virtualenvs.in-project = null
+virtualenvs.options.always-copy = false
+virtualenvs.options.no-pip = false
+virtualenvs.options.no-setuptools = false
+virtualenvs.options.system-site-packages = false
+virtualenvs.path = "{cache-dir}\\virtualenvs"  # C:\Users\thend\AppData\Local\pypoetry\Cache\virtualenvs
+virtualenvs.prefer-active-python = false
+virtualenvs.prompt = "{project_name}-py{python_version}"
+warnings.export = true    
+```
+- GLOBAL POETRY SETUP: **NOTE:** my windows environment has two version of python 3.8 and 3.11; by default
+poetry picked up 3.8. Need to explicitly specify:
+```
+poetry config virtualenvs.prefer-active-python true
+# NEED to check whether the following is STILL needed!!!
+poetry env use python311
+```
+- GLOBAL POETRY SETUP: store the virtualenv in the same folder as the project
+```
+poetry config virtualenvs.in-project true
+```
+
+- PROJECT SETUP: generate `pyproject.toml` file
+```
+poetry init
+```
+- create virtual environment & add python module
+```
+poetry add <python_module_name>
+```
+
+
+
