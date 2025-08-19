@@ -71,9 +71,9 @@ pip install mypy
 }
 ```
 
-- Tooling TEST, `pytest`
+- Tooling TEST, `pytest` and `pytest-cov`
 ```
-pip install pytest
+pip install pytest pytest-cov
 ```
 
 - Final `settings.json`
@@ -103,14 +103,22 @@ pip install pytest
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnType": false,
+        "editor.formatOnPaste": false,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "never"
+        }
+    }	
 }
 ```
 
 
 - DEBUGGING
   - Use the Debug panel (Cmd/Ctrl + Shift + D)
-  - Configure launch.json for custom debug configurations
+  - Configure `launch.json` for custom debug configurations
   
   
 ## POETRY
@@ -124,4 +132,8 @@ pip install poetry
   - `requirements.txt` for pip, and 
   - `pyproject.toml` for Poetry.
 
-
+- useful commands
+```
+poetry add pytest
+poetry show
+```
