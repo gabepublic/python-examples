@@ -25,7 +25,7 @@ print('=================')
 
 ################################
 # SET; contains UNIQUE values
-# IMMUTABLE
+# MUTABLE
 day_of_week = {'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'}
 
 
@@ -35,6 +35,29 @@ day_of_week = {'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'}
 # in - to check existence
 exist = 'MON' in day_of_week
 print("Mon is the day of the week: ", exist)
+print('=================')
+
+################################
+# FROZENSET; contains UNIQUE values
+# IMMUTABLE
+months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+months = frozenset(months)
+print(months)
+
+# Please note how a frozen set initially is actually declared as a list, and then converted to a frozen set
+
+# It is NOT possible to add or remove elements after it's creation
+
+if "January" in months:
+    print("January is in months")
+else:
+    print("January is not in months")
+
+if "ImaginaryMonth" in months:
+    print("ImaginaryMonth is in months")
+else:
+    print("ImaginaryMonth is not in months")
+
 print('=================')
 
 ################################
